@@ -63,7 +63,7 @@ export const deleteUserByID = async (req: Request, res: Response) => {
     });
     return res.send({
       success: true,
-      message: response,
+      message: "user deleted",
     });
   } catch (error) {
     return res.send(error);
