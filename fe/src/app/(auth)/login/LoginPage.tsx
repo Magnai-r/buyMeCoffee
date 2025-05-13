@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,12 +9,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+import { Dispatch, SetStateAction } from "react";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -24,42 +25,46 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-const signUpSchema = z.object({
+const loginSchema = z.object({
   email: z.string().email({ message: "Plesse enter a valid email" }),
   password: z
     .string()
     .min(8, { message: "Please enter more than 8 characters" }),
 });
 
-export function SignUpEmailPass({ username }: { username: string }) {
-  const form = useForm<z.infer<typeof signUpSchema>>({
-    resolver: zodResolver(signUpSchema),
+export const LoginPage = () => {
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
-  const handleSignUp = (values: z.infer<typeof signUpSchema>) => {
+
+  // 2. Define a submit handler.
+  const handleLogin = (values: z.infer<typeof loginSchema>) => {
     console.log(values.email, values.password);
   };
+
   return (
     <Card className="w-1/2 shadow-none border-0">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSignUp)}>
-          <CardHeader className="pb-6">
+        <form
+          onSubmit={form.handleSubmit(handleLogin)}
+          className="flex flex-col gap-4"
+        >
+          <CardHeader>
             <CardTitle className="text-2xl font-semibold leading-8">
-              Welcome, {username}
+              Welcome back
             </CardTitle>
-            <CardDescription className="text-sm font-normal leading-5 text-[#71717A]">
-              Connect email and set a password
-            </CardDescription>
           </CardHeader>
-          <CardContent className="pb-6">
+          <CardContent className="">
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem className="gap-2 pb-3">
+                <FormItem className="pb-3 gap-2">
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter your email here" {...field} />
@@ -72,7 +77,7 @@ export function SignUpEmailPass({ username }: { username: string }) {
               control={form.control}
               name="password"
               render={({ field }) => (
-                <FormItem className="gap-2">
+                <FormItem className="pb-3">
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input
@@ -87,7 +92,7 @@ export function SignUpEmailPass({ username }: { username: string }) {
             />
           </CardContent>
           <CardFooter className="w-full">
-            <Button className="w-full bg-black" type="submit">
+            <Button className="w-full" type="submit">
               Continue
             </Button>
           </CardFooter>
@@ -95,4 +100,4 @@ export function SignUpEmailPass({ username }: { username: string }) {
       </Form>
     </Card>
   );
-}
+};

@@ -5,10 +5,12 @@ import { SignUpEmailPass, SignUpUsername } from "../components";
 
 const SignUpPage = () => {
   const [step, setStep] = useState<number>(0);
+  const [username, setUsername] = useState<string>("");
+
   if (step === 0) {
-    return <SignUpUsername setStep={setStep} />;
+    return <SignUpUsername setStep={setStep} setUsername={setUsername} />;
   } else {
-    return <SignUpEmailPass />;
+    return <SignUpEmailPass username={username} />;
   }
 };
 

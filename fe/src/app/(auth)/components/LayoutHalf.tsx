@@ -11,7 +11,14 @@ export const LayoutHalf = () => {
         className=" absolute top-8 left-20"
       />
       <div className="flex flex-col w-full gap-10 justify-center items-center">
-        <Image src="/Icon.png" alt="Coffeecup" width={240} height={240} />
+        <Image
+          src="/Icon.png"
+          alt="Coffeecup"
+          width={240}
+          height={240}
+          priority //
+          className="h-auto w-[240px]"
+        />
         <div className="w-full flex flex-col gap-3">
           <p className="text text-2xl text-center font-bold ">
             Fund your creative work
