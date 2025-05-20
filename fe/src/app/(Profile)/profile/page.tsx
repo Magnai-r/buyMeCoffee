@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { CreateProfile } from "./createProfile";
+import { CreateCardAccount } from "./createCardAccount";
 
 export default function page() {
   return (
@@ -22,6 +24,8 @@ export default function page() {
           </Link>
         </div>
       </div>
+      <CreateProfile />
+      <CreateCardAccount />
     </div>
   );
 }
