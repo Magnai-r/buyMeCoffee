@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { LoginPage } from "./LoginPage";
+import LoginToProfile from "./LoginToProfile";
 
 export default function Login() {
   return (

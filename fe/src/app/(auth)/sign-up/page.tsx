@@ -2,6 +2,7 @@ import React from "react";
 import SignUpPage from "./SignUpPage";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import SignUpPageToLogin from "./SignUpPage";
 
 export default function SignUp() {
   return (
@@ -14,7 +15,7 @@ export default function SignUp() {
           Log in
         </Button>
       </Link>
-      <SignUpPage />
+      <SignUpPageToLogin />
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { SignUpEmailPass, SignUpUsername } from "../components";
 
-const SignUpPage = () => {
+const SignUpPageToLogin = () => {
   const [step, setStep] = useState<number>(0);
   const [username, setUsername] = useState<string>("");
 
@@ -14,4 +14,4 @@ const SignUpPage = () => {
   }
 };
 
-export default SignUpPage;
+export default SignUpPageToLogin;
